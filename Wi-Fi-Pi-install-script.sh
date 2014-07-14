@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script.sh
 # 
-# @version    1.0 2014-07-13
+# @version    1.1 2014-07-14
 # @copyright  Copyright (c) 2014 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
@@ -65,6 +65,16 @@ echo "#### Unpacking configuration files"
 echo "###############################################################"
 
 tar xvzf wifipi.tar
+
+#per default all configuration files are read only except for the owner
+chmod 644 ./configuration-files/*
+#script files must be executable
+chmod 755 ./configuration-files/*.sh
+#the openvpn directory needs exec rights so it can be opened
+chmod 775 ./configuration-files/openvpn
+#openvpn config files must only be read/writable for the owner
+chmod 600 ./configuration-files/openvpn/*.*
+
 cd ./configuration-files
 
 echo ""
@@ -109,6 +119,9 @@ cp action_wpa.sh /etc/wpa_supplicant/action_wpa.sh
 
 #autostart hostapd on system startup
 cp hostapd /etc/default/hostapd
+
+#autostart sometimes doesn't work correctly, so add a start/stop wlan0 to rc.local
+cp rc.local /etc/rc.local
 
 echo ""
 echo "done..."
