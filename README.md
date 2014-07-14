@@ -6,11 +6,11 @@ This repository contains scripts and code to use a Raspberry Pi as a Wi-Fi acces
 * Ethernet (eth0)
 * An additional WLAN interface (wlan1)
 
-Connection to the Internet is NATed and a VPN client tunnel to a VPN server is used to encrypt ALL traffic to and from ALL devices connected to the access point. Alternatively, direct NATing without a VPN tunnel is also possible. However such devices are available off-the-shelf for a few euros.
+Connection to the Internet is NATed and a VPN client tunnel to a VPN server is used to encrypt ALL traffic to and from ALL devices connected to the access point. Alternatively, direct NATing without a VPN tunnel is also possible.
 
-OpenVPN in client mode is used for creating the tunnel to an OpenVPN server somewhere on the Internet. A great project description of how to set-up a VPN server on the other end at home (on a Raspberry Pi, of course) can be found here. Alternatively it's also possible to use a commercial service that offers OpenVPN server connectivity.
+OpenVPN in client mode is used for creating the tunnel to an OpenVPN server somewhere on the Internet. A great project description of how to set-up a VPN server on the other end at home (on a Raspberry Pi, of course) can be found at http://readwrite.com/2014/04/10/raspberry-pi-vpn-tutorial-server-secure-web-browsing. Alternatively it's also possible to use a commercial service that offers OpenVPN server connectivity.
 
-Hardware Requirements: Apart from a Raspberry Pi, a USB Wi-Fi Dongle is necessary. This project uses a hostapd executable that was compiled for the Realtek RTL8188CUS chipset. The following USB Wi-Fi dongles have been checked for compatibility:
+Hardware Requirements: Apart from a Raspberry Pi, a USB Wi-Fi dongle is necessary. If Wi-Fi is used as a backhaul, a second Wi-Fi USB dongle is required. This project uses a hostapd executable that was compiled for the Realtek RTL8188CUS chipset. The following devices have been checked for compatibility:
 
 * EDIMAX EW-7811UN
 
