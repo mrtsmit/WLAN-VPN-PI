@@ -2,12 +2,12 @@
 
 #
 # Wi-Fi-Pi-install-script.sh
-# 
-# @version    1.1 2014-07-14
+#
+# @version    1.2 2014-07-16
 # @copyright  Copyright (c) 2014 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
-# 
+#
 # Installs and configures all necessary components
 # for a Raspberry Pi to act as a Wi-Fi access point
 # with backhaul over:
@@ -18,6 +18,17 @@
 # For details see the project Wiki at:
 #
 #              https://github.com/martinsauter/WLAN-VPN-Pi/wiki
+#
+# Version History
+#
+# 1.0 - Initial version on Github
+#
+# 1.1 - Improved startup behavior by restarting wlan0 after booting in
+#       rc.localhost
+#
+# 1.2 - Limit the sshd to wlan0 (the 192.168.55.0 subnet)
+#     - Shell script added to generate the tar file
+#
 #
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
@@ -173,6 +184,16 @@ cp ./openvpn/* /etc/openvpn
 #disable openvpn client autostart
 apt-get -y install chkconfig
 chkconfig openvpn off
+
+echo ""
+echo "done..."
+echo ""
+
+echo "### Limiting SSH access to the Access Point Wifi network"
+echo "### (192.168.55.0) in /etc/ssh/sshd_config"
+echo "########################################################"
+
+cp sshd_config /etc/ssh
 
 echo ""
 echo "done..."

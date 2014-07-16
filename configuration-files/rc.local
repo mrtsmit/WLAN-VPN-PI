@@ -27,6 +27,9 @@ sudo ifup wlan0
 sudo /usr/sbin/hostapd -B -P /var/run/hostapd.pid /etc/hostapd/hostapd.conf &
 sudo service isc-dhcp-server restart
 
+# Restart the SSH server daemon after restarting wlan0
+sudo service ssh restart
+
 # end of the modification
 
 exit 0
