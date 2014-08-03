@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script.sh
 #
-# @version    1.2 2014-07-16
+# @version    1.3 2014-08-03
 # @copyright  Copyright (c) 2014 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
@@ -29,6 +29,9 @@
 # 1.2 - Limit the sshd to wlan0 (the 192.168.55.0 subnet)
 #     - Shell script added to generate the tar file
 #
+# 1.3 - Include system package update at start of script
+#     - Remove wolfram-engine to reduce update
+#     - Install tcpdump and htop utilities as they are useful in this context
 #
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
@@ -58,7 +61,6 @@ echo ""
 #### TO BE DONE MANUALLY BEFORE RUNNING THIS SCRIPT!!!
 
 #sudo raspi-config --> change locale, etc.
-#sudo apt-get update && sudo apt-get --yes upgrade
 #sudo reboot
 
 #### After the reboot install and configure all necessary components
@@ -66,12 +68,28 @@ echo ""
 
 echo "###############################################################"
 echo "IMPORTANT: The script requires you to change the Raspberry Pi"
-echo "default password as otherwise the setup is not secure"
+echo "default password as otherwise the setup is not secure."
 echo "###############################################################"
 
 passwd pi
 
+
 echo ""
+echo "#################################################################"
+echo " Updating all packages to the latest version and removing the"
+echo " Wolfram engine as it is not needed and requires huge udpates."
+echo " Also, tcpdump and htop are installed as they might be useful"
+echo "#################################################################"
+
+apt-get update
+apt-get -y remove wolfram-engine
+apt-get -y install htop tcpdump
+apt-get -y upgrade
+apt-get -y install rpi-update
+rpi-update
+
+echo ""
+echo "###############################################################"
 echo "#### Unpacking configuration files"
 echo "###############################################################"
 
