@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script.sh
 #
-# @version    1.3 2014-08-03
+# @version    1.4 2016-01-06
 # @copyright  Copyright (c) 2014 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
@@ -32,6 +32,20 @@
 # 1.3 - Include system package update at start of script
 #     - Remove wolfram-engine to reduce update
 #     - Install tcpdump and htop utilities as they are useful in this context
+#
+# 1.4 - Small updates to support Raspbian based on Debian Jessie
+#       Released in September 2015:
+#     - The Jessie Image starts the OpenVPN client automatically, therefore
+#       NAT forwarding between the wlan0 and tun0 interfaces is enabled
+#       during power up in rc.local
+#     - Disable IPv6 in sysctl.conf which is now necessary as it is active
+#       by default. For the VPN client this is not desirable as some
+#       VPN providers only offer IPv6 connectivity but also return IPv6
+#       DNS responses. If there is local IPv6 connectivity, data does
+#       then NOT flow through the tunnel but circumvents it.
+#     - hostapd is now held with apt-mark hold so it is not updated
+#       automatically. This is necessary as a proprietary hostapd is used
+#       for the WiFi USB dongles used for this project.
 #
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
@@ -142,6 +156,9 @@ cd ..
 
 #copy access point configuration file
 cp hostapd.conf /etc/hostapd/
+
+#make sure hostapd is not updated automatically as we use a proprietary one (see above)
+sudo apt-mark hold hostapd
 
 #put a modified action_wpa.sh in lace to fix wpa supplicant misbehavior with two Wi-Fi interfaces
 cp action_wpa.sh /etc/wpa_supplicant/action_wpa.sh
