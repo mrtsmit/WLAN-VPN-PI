@@ -47,6 +47,8 @@
 #       automatically. This is necessary as a proprietary hostapd is used
 #       for the WiFi USB dongles used for this project.
 #
+# 1.41 - Debian Jessie - DNS through tunnel interface fix in dhcpd.conf
+#
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
 # of eth0, wlan0 and wlan1 and a fair number of network configuration files.
