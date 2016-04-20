@@ -9,6 +9,8 @@
 # before the VPN tunnel is allowed to go through.
 #
 
+cp /etc/dnsmasq.conf.no-tunnel /etc/dnsmasq.conf
+service dnsmasq restart
 
 /etc/init.d/openvpn stop
 

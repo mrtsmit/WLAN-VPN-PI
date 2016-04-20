@@ -205,7 +205,10 @@ echo "### Installing and configuring Dnsmasq as a local DNS server"
 echo "##############################################################"
 
 apt-get install -y dnsmasq
-cp dnsmasq.conf /etc/dnsmasq.conf
+
+cp dnsmasq.conf.no-tunnel /etc/dnsmasq.conf
+cp dnsmasq.conf.no-tunnel /etc/dnsmasq.conf.no-tunnel
+cp dnsmasq.conf.with-tunnel /etc/dnsmasq.conf.with-tunnel
 
 echo ""
 echo "done..."
