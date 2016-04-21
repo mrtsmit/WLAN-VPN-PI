@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script.sh
 #
-# @version    1.4 2016-01-06
+# @version    1.5 2016-04-21
 # @copyright  Copyright (c) 2014 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
@@ -33,7 +33,8 @@
 #     - Remove wolfram-engine to reduce update
 #     - Install tcpdump and htop utilities as they are useful in this context
 #
-# 1.4 - Small updates to support Raspbian based on Debian Jessie
+# 1.4 - 2016-01-06
+#     - Small updates to support Raspbian based on Debian Jessie
 #       Released in September 2015:
 #     - The Jessie Image starts the OpenVPN client automatically, therefore
 #       NAT forwarding between the wlan0 and tun0 interfaces is enabled
@@ -49,11 +50,19 @@
 #
 # 1.41 - Debian Jessie - DNS through tunnel interface fix in dhcpd.conf
 #
+# 1.5  - 2016-04-21
+#      - Improved DNS behavior: By using different versions of dnsmasq.conf
+#        when the VPN tunnel is started and stopped it is ensured that DNS
+#        requests flow through the VPN tunnel when established. When direct
+#        Internet access is used the local DNS resolver is used instead.
+#      - Check for root permissions in scripts introduced to prevent partial
+#        execution without proper access rights.
+#
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
 # of eth0, wlan0 and wlan1 and a fair number of network configuration files.
 # ONLY USE WITH A FRESH RASPBERRY PI IMAGE FILE
-##############################################################################   
+##############################################################################
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
@@ -68,6 +77,10 @@
 # You should have received a copy of the GNU Affero General Public
 # License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root, please try again" 1>&2
+   exit 1
+fi
 
 echo "#### Wi-Fi Pi Access Point and VPN Installation"
 echo "###################################################"

@@ -9,6 +9,11 @@
 # before the VPN tunnel is allowed to go through.
 #
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root, please try again" 1>&2
+   exit 1
+fi
+
 cp /etc/dnsmasq.conf.no-tunnel /etc/dnsmasq.conf
 service dnsmasq restart
 

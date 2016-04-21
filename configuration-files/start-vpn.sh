@@ -13,6 +13,11 @@
 #    world that are running on a device behind the NAT.
 #
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root, please try again!" 1>&2
+   exit 1
+fi
+
 echo ""
 echo "Starting the OpenVPN client. Direct NAT is disabled first which could lead to"
 echo "some error messages below. They can be safely ignored..."
