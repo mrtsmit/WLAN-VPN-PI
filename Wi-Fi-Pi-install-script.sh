@@ -58,6 +58,13 @@
 #      - Check for root permissions in scripts introduced to prevent partial
 #        execution without proper access rights.
 #
+# 1.51 - 2016-07-01 modified the script to stop rpi-update from running
+#        as at some point between kernel 4.1 and 4.4, the hostapd Wifi 
+#        Access Point functionality used below got broken. Until a fix is 
+#        in place make sure you have a kernel version <= 4.1 before 
+#        proceeding
+#        
+#
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
 # of eth0, wlan0 and wlan1 and a fair number of network configuration files.
@@ -114,7 +121,12 @@ apt-get update
 apt-get -y remove wolfram-engine
 apt-get -y install htop tcpdump
 apt-get -y upgrade
-apt-get -y install rpi-update
+
+# Temporarily deactivating the kernel update instructions. 
+# For details see v1.51 description above.
+#
+#apt-get -y install rpi-update
+
 rpi-update
 
 echo ""
