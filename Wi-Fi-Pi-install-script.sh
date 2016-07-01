@@ -126,8 +126,8 @@ apt-get -y upgrade
 # For details see v1.51 description above.
 #
 #apt-get -y install rpi-update
-
-rpi-update
+#
+#rpi-update
 
 echo ""
 echo "###############################################################"
