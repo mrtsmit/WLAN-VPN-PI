@@ -17,7 +17,9 @@ Option 2: Raspberry Pi 1/2 (without built-in Wi-Fi). Apart from a Raspberry Pi, 
 
 * EDIMAX EW-7811UN
 
-For other chipsets, other hostapd executables might be required.
+For other chipsets, other hostapd executables might be required. 
+
+NOTE THAT THE USE OF **THIS** OPTION IS STRONGLY DISCOURAGED AS CURRENT KERNELS BREAK THE HOSTAPD FUNCTIONALITY. AS A CONSEQUENCE KERNEL UPDATES ARE BLOCKED. USE A RASPBERRY PI 3 FOR THIS PORJECT WHICH DOES NOT SUFFER FROM THIS PROBLEM.
 
 Have a look at the project's wiki for installation and use instructions: 
 
