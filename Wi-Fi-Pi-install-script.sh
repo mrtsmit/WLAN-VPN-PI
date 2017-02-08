@@ -63,7 +63,11 @@
 #        Access Point functionality used below got broken. Until a fix is 
 #        in place make sure you have a kernel version <= 4.1 before 
 #        proceeding
-#        
+#
+# 1.52 - 2017-02-08 further modified the script to prevent kernel updates
+#        which break the hostapd functinality of the proprietary model
+#        THIS IS VERY BAD FOR SECURITY. CONSIDER USING A RASPI 3 FOR
+#        THIS PROJECT THAT DOES NOT SUFFER FROM THIS PROBLEM!!!!!
 #
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
@@ -99,6 +103,20 @@ echo ""
 #sudo raspi-config --> change locale, etc.
 #sudo reboot
 
+echo ""
+echo "#################################################################"
+echo "WARNING: THIS PROJECT DISABLES KERNEL UPDATES AS THESE"
+echo "BREAK THE PROPRIETARY HOSTAPD ACCESS POINT FUNCTIONALITY."
+echo "THIS IS A SECURITY RISK!!! CONSIDER USING A RASPBERRY PI 3"
+echo "FOR THIS PROJECT WHICH DOES NOT HAVE THIS PROBLEM!!!"
+echo ""
+echo "MAKE SURE YOU HAVE AN IMAGE WITH AN OLD KERNEL!"
+echo "FOR DETAILS SEE THE WIKI TO THIS PROJECT AT"
+echo "https://github.com/martinsauter/WLAN-VPN-Pi/wiki/Installation"
+echo "#################################################################"
+echo ""
+
+
 #### After the reboot install and configure all necessary components
 #######################################################################
 
@@ -116,6 +134,9 @@ echo " Updating all packages to the latest version and removing the"
 echo " Wolfram engine as it is not needed and requires huge udpates."
 echo " Also, tcpdump and htop are installed as they might be useful"
 echo "#################################################################"
+
+sudo apt-mark hold raspberrypi-kernel
+sudo apt-mark hold raspberrypi-bootloader
 
 apt-get update
 apt-get -y remove wolfram-engine
