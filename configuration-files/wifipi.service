@@ -1,0 +1,11 @@
+[Unit]
+Description=wifipi commands to run at the end of the boot process
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/etc/wifipi-start.sh
+
+[Install]
+WantedBy=wifipi.target
+
