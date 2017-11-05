@@ -34,7 +34,9 @@
 #
 # 3.0    Updated for Raspbian Stretch in which the network interface
 #        configuration has been moved from /etc/network/interfaces
-#        to /etc/dhcpcd.conf
+#        to /etc/dhcpcd.conf. In addition rc.local doesn't work anymore
+#        so stuff that has to be executed at the end of the boot process
+#        now has to be run via a systemd service script.
 #        
 #
 ##############################################################################
@@ -143,9 +145,15 @@ cp hostapd.conf.pi3 /etc/hostapd/hostapd.conf
 #autostart hostapd on system startup
 cp hostapd /etc/default/hostapd
 
-#autostart doesn't really work, run a script from rc.local to fix this
-cp rc.local.stretch /etc/rc.local
-cp start-hostapd.sh /home/pi
+#autostart doesn't really work, run a script at the end of the boot process
+#this is done by registering a service with systemd as rc.local doesn't work
+#anymore in Raspbian Stretch...
+
+cp wifipi-start.sh /etc
+cp wifipi.target /etc/systemd/system
+mkdir /etc/systemd/system/wifipi.target.wants
+cp wifipi.service /etc/systemd/system/wifipi.target.wants
+ln -sf /etc/systemd/system/wifipi.target /etc/systemd/system/default.target
 
 echo ""
 echo "done..."
