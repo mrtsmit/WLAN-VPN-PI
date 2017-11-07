@@ -140,7 +140,7 @@ apt-get -y install hostapd
 cp hostapd.conf.pi3 /etc/hostapd/hostapd.conf
 
 #put a modified action_wpa.sh in lace to fix wpa supplicant misbehavior with two Wi-Fi interfaces
-#cp action_wpa.sh /etc/wpa_supplicant/action_wpa.sh
+cp action_wpa.sh /etc/wpa_supplicant/action_wpa.sh
 
 #autostart hostapd on system startup
 cp hostapd /etc/default/hostapd
@@ -217,7 +217,7 @@ echo "### Limiting SSH access to the Access Point Wifi network"
 echo "### (192.168.55.0) in /etc/ssh/sshd_config"
 echo "########################################################"
 
-#cp sshd_config /etc/ssh
+cp sshd_config /etc/ssh
 
 echo ""
 echo "done..."
