@@ -3,19 +3,21 @@
 #
 # Wi-Fi-Pi-install-script-Pi-3-Raspbian-Stretch.sh
 #
-# @version    3.0.1 2018-10-30
+# @version    3.0.2 2018-11-10
 # @copyright  Copyright (c) 2014-2017 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
 #
-# Installs and configures all necessary components
-# for a Raspberry Pi 3 to act as a Wi-Fi access point
-# WITH ITS INTERNAL WIF-FI and with backhaul over:
+# Installs and configures all necessary components for a 
+# Raspberry Pi 1, 2 and 3 to act as a Wi-Fi access point
+# with its INTERNAL WIFI (Pi 3) or EXTERNAL WIFI (Pi 1 and 2)
+# and with backhaul over:
 #
 # a) Ethernet cable
 # b) Wi-Fi, if a USB Wi-Fi dongle is connected that supplements
-#    the Wi-Fi adapter already built into the Pi-3 that is used
-#    as a Wi-Fi access point.
+#    the Wi-Fi adapter already built into the Pi-3 (or the first 
+#    external Wi-Fi adapter in a Pi 1 and 2) that is used as a
+#    Wi-Fi access point.
 #
 # For details see the project Wiki at:
 #
@@ -40,7 +42,9 @@
 #
 # 3.0.1  wpa_supplicant.conf renamed to wpa_supplicant-wlan1.conf to
 #        prevent race condition with hostapd for wlan0 during power up.
-#        
+# 
+# 3.0.2  Now also tested with a Raspberry Pi 1 and 2 with an external 
+#        Wifi USB dongle.
 #
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
