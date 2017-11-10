@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script-Pi-3-Raspbian-Stretch.sh
 #
-# @version    3.0 2018-10-30
+# @version    3.0.1 2018-10-30
 # @copyright  Copyright (c) 2014-2017 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
@@ -37,6 +37,9 @@
 #        to /etc/dhcpcd.conf. In addition rc.local doesn't work anymore
 #        so stuff that has to be executed at the end of the boot process
 #        now has to be run via a systemd service script.
+#
+# 3.0.1  wpa_supplicant.conf renamed to wpa_supplicant-wlan1.conf to
+#        prevent race condition with hostapd for wlan0 during power up.
 #        
 #
 ##############################################################################
