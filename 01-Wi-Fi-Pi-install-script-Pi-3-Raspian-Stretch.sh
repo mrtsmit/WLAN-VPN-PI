@@ -124,7 +124,8 @@ echo "#### Copying basic configuration for eth0, wlan0 and wlan1"
 echo "###############################################################"
 
 cp dhcpcd.conf /etc/dhcpcd.conf
-cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
+rm /etc/wpa_supplicant.conf
+cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant-wlan1.conf
 
 echo ""
 echo "done..."
