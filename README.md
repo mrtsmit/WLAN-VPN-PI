@@ -1,7 +1,7 @@
 WLAN-VPN-Pi
 ===========
 
-This repository contains scripts and code to use a Raspberry Pi 3 with built in Wifi as a Wi-Fi access point (wlan0) that connects to the Internet via the following interfaces:
+This repository contains scripts and code to use a Raspberry Pi 3 with built in Wifi (or a Pi 1 and 2 with external Wifi) as a Wi-Fi access point (wlan0) that connects to the Internet via the following interfaces:
 
 * Ethernet (eth0)
 * It is also possible to use an additional WLAN interface (wlan1) as backhaul with an additional USB Wifi dongle. In practice however, stability and performance are far from ideal. Use of wlan1 backhaul is thus discouraged!
@@ -12,9 +12,11 @@ OpenVPN in client mode is used for creating the tunnel to an OpenVPN server some
 
 Hardware Requirements: 
 
-Option 1: A Raspberry Pi 3 with built-in Wi-Fi. Backhaul is possible via Ethernet or Wi-Fi (discouraged). If Wi-Fi is used a USB Wi-Fi dongle is required (see below).
+Option 1: A Raspberry Pi 3 with built-in Wi-Fi. Backhaul is possible via Ethernet or Wi-Fi (discouraged).
 
-Option 2 (discouraged): A Raspberry Pi 1/2 (without built-in Wi-Fi). Apart from a Raspberry Pi, a USB Wi-Fi dongle is necessary. If Wi-Fi is used as a backhaul, a second Wi-Fi USB dongle is required. This option is STRONGLY discourages as hostapd of Raspbian Strech does not work reliably with external Wifi dongles over longer periods of time (EDIMAX EW-7811UN USB Wifi dongle).
+Option 2: A Raspberry Pi 1/2 (without built-in Wi-Fi). Apart from a Raspberry Pi, a USB Wi-Fi dongle is necessary. 
+
+Note: If Wi-Fi is used as a backhaul for both options, an additional Wi-Fi USB dongle is required. This option is STRONGLY discouraged as concurrent use of 2 Wifis, one as AP and one as Client is not very stable (tested with an EDIMAX EW-7811UN USB Wifi dongle).
 
 Have a look at the project's wiki for installation and use instructions: 
 
