@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script-Pi-3-Raspbian-Stretch.sh
 #
-# @version    3.0.2 2018-11-10
+# @version    3.0.3 2018-11-10
 # @copyright  Copyright (c) 2014-2017 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
@@ -45,6 +45,11 @@
 # 
 # 3.0.2  Now also tested with a Raspberry Pi 1 and 2 with an external 
 #        Wifi USB dongle.
+#
+# 3.0.3  Added the removal of Bluetooth software during the install process
+#        as otherwise the boot process waits 30 seconds for BT hardware 
+#        on a Raspi 1 and 2 where it doesn't exit which prevents NATing
+#        to be configured as soon as possible.
 #
 ##############################################################################
 # IMPORTANT: This script significantly changes the network configuration
@@ -101,6 +106,8 @@ apt-get update && apt-get -y upgrade
 
 apt-get -y install htop tcpdump
 apt-get -y upgrade
+
+apt-get -y remove pi-bluetooth bluez bluez-firmware
 
 apt-get -y install rpi-update
 rpi-update
