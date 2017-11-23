@@ -3,7 +3,7 @@
 #
 # Wi-Fi-Pi-install-script-Pi-3-Raspbian-Stretch.sh
 #
-# @version    3.0.3 2018-11-10
+# @version    3.0.3 2018-11-23
 # @copyright  Copyright (c) 2014-2017 Martin Sauter, martin.sauter@wirelessmoves.com
 # @license    GNU General Public License v2
 # @since      Since Release 1.0
