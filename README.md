@@ -1,6 +1,8 @@
 WLAN-VPN-Pi
 ===========
 
+Cloned from https://github.com/martinsauter/WLAN-VPN-Pi.git
+
 This repository contains scripts and code to use a Raspberry Pi 3 with built in Wifi (or a Pi 1 and 2 with external Wifi) as a Wi-Fi access point (wlan0) that connects to the Internet via the following interfaces:
 
 * Ethernet (eth0)
