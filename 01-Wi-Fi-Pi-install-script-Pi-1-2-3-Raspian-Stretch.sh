@@ -93,7 +93,7 @@ echo "IMPORTANT: The script requires you to change the Raspberry Pi"
 echo "default password as otherwise the setup is not secure."
 echo "###############################################################"
 
-passwd pi
+# passwd pi
 
 
 echo ""
@@ -232,7 +232,7 @@ echo "### Limiting SSH access to the Access Point Wifi network"
 echo "### (192.168.55.0) in /etc/ssh/sshd_config"
 echo "########################################################"
 
-cp sshd_config /etc/ssh
+# cp sshd_config /etc/ssh
 
 echo ""
 echo "done..."
